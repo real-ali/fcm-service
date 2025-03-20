@@ -2,6 +2,7 @@ use gcp_auth::CustomServiceAccount;
 use gcp_auth::TokenProvider;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
+use serde_json::json;
 use serde_json::Value;
 use std::error::Error;
 use std::fs;
@@ -105,6 +106,7 @@ impl FcmService {
         if response.status().is_success() {
             let response_text = response.text().await?;
             println!("Notification sent successfully: {}", response_text);
+            println!("Notification Payload is : {:#?}", json!(payload));
 
             Ok(())
         } else {
