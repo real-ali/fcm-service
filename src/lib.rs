@@ -84,6 +84,7 @@ impl FcmService {
         let project_id = self.get_project_id()?;
         let client = Client::new();
         let credentials_path = PathBuf::from(&self.credential_file);
+        // let service_account = CustomServiceAccount::from_file(credentials_path)?;
         let service_account = CustomServiceAccount::from_file(credentials_path)?;
         let scopes = &["https://www.googleapis.com/auth/firebase.messaging"];
         let token = service_account.token(scopes).await?;
@@ -102,7 +103,9 @@ impl FcmService {
             .await?;
 
         if response.status().is_success() {
-            println!("Notification sent successfully");
+            let response_text = response.text().await?;
+            println!("Notification sent successfully: {}", response_text);
+
             Ok(())
         } else {
             let error_text = response.text().await?;
