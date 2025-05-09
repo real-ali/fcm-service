@@ -105,8 +105,6 @@ impl FcmService {
 
         if response.status().is_success() {
             let response_text = response.text().await?;
-            println!("Notification sent successfully: {}", response_text);
-            println!("Notification Payload is : {:#?}", json!(payload));
 
             Ok(())
         } else {
