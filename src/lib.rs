@@ -2,6 +2,7 @@ use gcp_auth::CustomServiceAccount;
 use gcp_auth::TokenProvider;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
+use serde_json::json;
 use serde_json::Value;
 use std::error::Error;
 use std::fs;
@@ -84,6 +85,7 @@ impl FcmService {
         let project_id = self.get_project_id()?;
         let client = Client::new();
         let credentials_path = PathBuf::from(&self.credential_file);
+        // let service_account = CustomServiceAccount::from_file(credentials_path)?;
         let service_account = CustomServiceAccount::from_file(credentials_path)?;
         let scopes = &["https://www.googleapis.com/auth/firebase.messaging"];
         let token = service_account.token(scopes).await?;
@@ -102,7 +104,8 @@ impl FcmService {
             .await?;
 
         if response.status().is_success() {
-            println!("Notification sent successfully");
+            let response_text = response.text().await?;
+
             Ok(())
         } else {
             let error_text = response.text().await?;
