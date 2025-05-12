@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Configuration for Android devices.
-#[derive(Serialize, Deserialize, Default)]
+#[derive(Clone, Debug, Serialize, Deserialize, Default)]
 pub struct AndroidConfig {
     collapse_key: Option<String>,
     priority: Option<String>,
@@ -9,20 +9,24 @@ pub struct AndroidConfig {
 }
 
 impl AndroidConfig {
+    #[must_use]
     pub fn new() -> Self {
         Self {
             ..Default::default()
         }
     }
 
+    #[must_use]
     pub fn collapse_key(&self) -> Option<&String> {
         self.collapse_key.as_ref()
     }
 
+    #[must_use]
     pub fn priority(&self) -> Option<&String> {
         self.priority.as_ref()
     }
 
+    #[must_use]
     pub fn ttl(&self) -> Option<&String> {
         self.ttl.as_ref()
     }

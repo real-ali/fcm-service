@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::{AndroidConfig, ApnsConfig, FcmNotification, FcmOptions, Target, WebpushConfig};
 
 /// Represents an FCM message with all supported fields.
-#[derive(Serialize, Deserialize, Default)]
+ #[derive(Clone, Debug, Serialize, Deserialize, Default)]
 pub struct FcmMessage {
     name: Option<String>,
     data: Option<HashMap<String, String>>,
@@ -20,6 +20,7 @@ pub struct FcmMessage {
 
 impl FcmMessage {
     /// Creates a new, empty `FcmMessage`.
+    #[must_use]
     pub fn new() -> Self {
         Self {
             ..Default::default()
@@ -66,34 +67,42 @@ impl FcmMessage {
         self.target = target;
     }
 
+    #[must_use]
     pub fn name(&self) -> Option<&String> {
         self.name.as_ref()
     }
 
+    #[must_use]
     pub fn data(&self) -> Option<&HashMap<String, String, RandomState>> {
         self.data.as_ref()
     }
 
+    #[must_use]
     pub fn notification(&self) -> Option<&FcmNotification> {
         self.notification.as_ref()
     }
 
+    #[must_use]
     pub fn android(&self) -> Option<&AndroidConfig> {
         self.android.as_ref()
     }
 
+    #[must_use]
     pub fn webpush(&self) -> Option<&WebpushConfig> {
         self.webpush.as_ref()
     }
 
+    #[must_use]
     pub fn apns(&self) -> Option<&ApnsConfig> {
         self.apns.as_ref()
     }
 
+    #[must_use]
     pub fn fcm_options(&self) -> Option<&FcmOptions> {
         self.fcm_options.as_ref()
     }
 
+    #[must_use]
     pub fn target(&self) -> &Target {
         &self.target
     }

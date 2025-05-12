@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Represents the target of the FCM message (token, topic, or condition).
-#[derive(Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum Target {
     Token(String),
@@ -11,6 +11,6 @@ pub enum Target {
 
 impl Default for Target {
     fn default() -> Self {
-        Self::Token("".to_string())
+        Self::Token(String::new())
     }
 }
