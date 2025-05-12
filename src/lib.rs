@@ -2,7 +2,6 @@ use gcp_auth::CustomServiceAccount;
 use gcp_auth::TokenProvider;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
-use serde_json::json;
 use serde_json::Value;
 use std::error::Error;
 use std::fs;
@@ -18,7 +17,7 @@ pub use domain::Target;
 pub use domain::WebpushConfig;
 
 /// Wrapper struct for FCM payload, required by the FCM v1 API.
-#[derive(Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize, Default)]
 pub struct FcmPayload {
     pub message: FcmMessage,
 }
@@ -68,7 +67,7 @@ impl FcmService {
 
         json.get("project_id")
             .and_then(|v| v.as_str())
-            .map(|s| s.to_string())
+            .map(std::string::ToString::to_string)
             .ok_or_else(|| {
                 io::Error::new(io::ErrorKind::InvalidData, "project_id not found").into()
             })
@@ -89,10 +88,7 @@ impl FcmService {
         let service_account = CustomServiceAccount::from_file(credentials_path)?;
         let scopes = &["https://www.googleapis.com/auth/firebase.messaging"];
         let token = service_account.token(scopes).await?;
-        let url = format!(
-            "https://fcm.googleapis.com/v1/projects/{}/messages:send",
-            project_id
-        );
+        let url = format!("https://fcm.googleapis.com/v1/projects/{project_id}/messages:send");
 
         let payload = FcmPayload { message };
 
@@ -104,12 +100,12 @@ impl FcmService {
             .await?;
 
         if response.status().is_success() {
-            let response_text = response.text().await?;
+            response.text().await?;
 
             Ok(())
         } else {
             let error_text = response.text().await?;
-            Err(format!("Failed to send notification: {:#?}", error_text).into())
+            Err(format!("Failed to send notification: {error_text:#?}").into())
         }
     }
 }

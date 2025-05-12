@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Represents the notification content of an FCM message.
-#[derive(Serialize, Deserialize, Default)]
+ #[derive(Clone, Debug, Serialize, Deserialize, Default)]
 pub struct FcmNotification {
     title: String,
     body: String,
@@ -9,20 +9,24 @@ pub struct FcmNotification {
 }
 
 impl FcmNotification {
+    #[must_use]
     pub fn new() -> Self {
         Self {
             ..Default::default()
         }
     }
 
+    #[must_use]
     pub fn title(&self) -> &str {
         &self.title
     }
 
+    #[must_use]
     pub fn body(&self) -> &str {
         &self.body
     }
 
+    #[must_use]
     pub fn image(&self) -> Option<&String> {
         self.image.as_ref()
     }
