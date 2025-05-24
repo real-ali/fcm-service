@@ -3,9 +3,11 @@
 A professional Rust library for sending Firebase Cloud Messaging (FCM) notifications with ease and efficiency.
 
 ## What is `fcm-service`?
+
 `fcm-service` is a lightweight and efficient Rust library that enables seamless integration with Firebase Cloud Messaging (FCM). It allows developers to send push notifications to devices across platforms securely using Google Cloud authentication.
 
 ## Features
+
 - Simple and easy-to-use API
 - Secure authentication via Google Cloud Service Account
 - Fully asynchronous using `tokio`
@@ -14,11 +16,12 @@ A professional Rust library for sending Firebase Cloud Messaging (FCM) notificat
 - Well-tested with included unit tests
 
 ## Installation
+
 To use `fcm-service`, add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-fcm-service = "0.2.0"
+fcm-service = "0.2.1"
 ```
 
 Alternatively, if using GitHub as the source:
@@ -29,6 +32,7 @@ fcm-service = { git = "https://github.com/real-ali/fcm-service" }
 ```
 
 ## Usage
+
 Here’s a quick example demonstrating how to send an FCM notification:
 
 ```rust
@@ -37,7 +41,7 @@ use fcm_service::{FcmService, FcmMessage, FcmNotification, Target};
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let service = FcmService::new("path/to/service-account.json");
-    
+
     let mut message = FcmMessage::new();
     let mut notification = FcmNotification::new();
     notification.set_title("Hello".to_string());
@@ -45,22 +49,26 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     notification.set_image(None);
     message.set_notification(Some(notification));
     message.set_target(Target::Token("device-token".to_string()));
-    
+
     service.send_notification(message).await?;
     Ok(())
 }
 ```
 
 ## Authentication
+
 This service uses a Google Cloud service account JSON file to authenticate API calls. Make sure you have a valid credential file from Google Cloud and provide its path when initializing the `FcmService`.
 
 ## Running Tests
+
 To ensure everything is working correctly, run:
+
 ```sh
 cargo test
 ```
 
 ### Example Test Cases
+
 ```rust
 #[cfg(test)]
 mod tests {
@@ -78,6 +86,7 @@ mod tests {
 ```
 
 ## Package Information
+
 ```toml
 [package]
 name = "fcm-service"
@@ -92,6 +101,7 @@ categories = ["api-bindings", "network-programming"]
 ```
 
 ## Dependencies
+
 ```toml
 [dependencies]
 reqwest = { version = "0.11", features = ["json"] }
@@ -106,12 +116,14 @@ tempfile = "3.10"
 ```
 
 ## Author
+
 Designed & Developed by **Sayed Ali Sina Hussaini**
 
 ### Social Links
-- Twitter: [real\_alisina](https://twitter.com/real_alisina)
+
+- Twitter: [real_alisina](https://twitter.com/real_alisina)
 - GitHub: [real-ali](https://github.com/real-ali)
 
 ## License
-This project is licensed under the MIT License.
 
+This project is licensed under the MIT License.
