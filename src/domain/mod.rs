@@ -6,7 +6,10 @@ mod fmc_options;
 mod target;
 mod web_push_config;
 
-pub use android_config::AndroidConfig;
+pub use android_config::{
+    AndroidConfig, AndroidNotification, Color, LightSettings, NotificationPriority, Priority,
+    Proxy, Visibility,
+};
 pub use apns_config::ApnsConfig;
 pub use fcm_message::FcmMessage;
 pub use fmc_notification::FcmNotification;
