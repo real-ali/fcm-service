@@ -18,7 +18,7 @@ To use `fcm-service`, add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-fcm-service = "0.1.5"
+fcm-service = "0.2.0"
 ```
 
 Alternatively, if using GitHub as the source:
