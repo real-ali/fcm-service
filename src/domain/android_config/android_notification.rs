@@ -149,7 +149,7 @@ impl AndroidNotification {
     pub fn proxy(&self) -> Option<&Proxy> {
         self.proxy.as_ref()
     }
-    
+
     pub fn set_title(&mut self, title: Option<String>) {
         self.title = title;
     }
@@ -214,7 +214,10 @@ impl AndroidNotification {
         self.local_only = local_only;
     }
 
-    pub fn set_notification_priority(&mut self, notification_priority: Option<NotificationPriority>) {
+    pub fn set_notification_priority(
+        &mut self,
+        notification_priority: Option<NotificationPriority>,
+    ) {
         self.notification_priority = notification_priority;
     }
 
