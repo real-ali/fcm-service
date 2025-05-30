@@ -1,4 +1,7 @@
 # Firebase Cloud Messaging (FCM) Rust Service
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A professional Rust library for sending Firebase Cloud Messaging (FCM) notifications with ease and efficiency.
 
@@ -127,3 +130,25 @@ Designed & Developed by **Sayed Ali Sina Hussaini**
 ## License
 
 This project is licensed under the MIT License.
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/valkrypton"><img src="https://avatars.githubusercontent.com/u/74088901?v=4?s=100" width="100px;" alt="Ali Tariq"/><br /><sub><b>Ali Tariq</b></sub></a><br /><a href="https://github.com/real-ali/fcm-service/commits?author=valkrypton" title="Code">💻</a> <a href="https://github.com/real-ali/fcm-service/commits?author=valkrypton" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
