@@ -1,20 +1,15 @@
-use gcp_auth::CustomServiceAccount;
-use gcp_auth::TokenProvider;
+use std::{error::Error, fs, io, path::PathBuf};
+
+use gcp_auth::{CustomServiceAccount, TokenProvider};
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::error::Error;
-use std::fs;
-use std::io;
-use std::path::PathBuf;
 mod domain;
-pub use domain::AndroidConfig;
-pub use domain::ApnsConfig;
-pub use domain::FcmMessage;
-pub use domain::FcmNotification;
-pub use domain::FcmOptions;
-pub use domain::Target;
-pub use domain::WebpushConfig;
+
+pub use domain::{
+    AndroidConfig, AndroidNotification, ApnsConfig, Color, FcmMessage, FcmNotification, FcmOptions,
+    LightSettings, NotificationPriority, Priority, Proxy, Target, Visibility, WebpushConfig,
+};
 
 /// Wrapper struct for FCM payload, required by the FCM v1 API.
 #[derive(Clone, Debug, Serialize, Deserialize, Default)]
@@ -111,10 +106,11 @@ impl FcmService {
 }
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use std::fs::File;
-    use std::io::Write;
+    use std::{fs::File, io::Write};
+
     use tempfile;
+
+    use super::*;
 
     fn setup_dummy_credentials(temp_dir: &tempfile::TempDir) -> String {
         let credential_path = temp_dir.path().join("service-account.json");

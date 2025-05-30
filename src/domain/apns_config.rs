@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 /// Configuration for Apple Push Notification Service (APNs).
- #[derive(Clone, Debug, Serialize, Deserialize, Default)]
+#[derive(Clone, Debug, Serialize, Deserialize, Default)]
 pub struct ApnsConfig {
     headers: Option<HashMap<String, String>>,
     payload: Option<HashMap<String, serde_json::Value>>,

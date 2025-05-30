@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::{AndroidConfig, ApnsConfig, FcmNotification, FcmOptions, Target, WebpushConfig};
 
 /// Represents an FCM message with all supported fields.
- #[derive(Clone, Debug, Serialize, Deserialize, Default)]
+#[derive(Clone, Debug, Serialize, Deserialize, Default)]
 pub struct FcmMessage {
     name: Option<String>,
     data: Option<HashMap<String, String>>,
