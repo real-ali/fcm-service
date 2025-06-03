@@ -29,7 +29,7 @@ pub struct AndroidConfig {
     ttl: Option<String>,
     restricted_package_name: Option<String>,
     notification: Option<AndroidNotification>,
-    fcm_option: Option<FcmOptions>,
+    fcm_options: Option<FcmOptions>,
     direct_boot_ok: Option<bool>,
 }
 
@@ -67,7 +67,7 @@ impl AndroidConfig {
     }
     #[must_use]
     pub fn fcm_option(&self) -> Option<&FcmOptions> {
-        self.fcm_option.as_ref()
+        self.fcm_options.as_ref()
     }
 
     #[must_use]
@@ -84,7 +84,7 @@ impl AndroidConfig {
     }
 
     pub fn set_fcm_option(&mut self, fcm_option: Option<FcmOptions>) {
-        self.fcm_option = fcm_option;
+        self.fcm_options = fcm_option;
     }
 
     pub fn set_direct_boot_ok(&mut self, direct_boot_ok: Option<bool>) {
