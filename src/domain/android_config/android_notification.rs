@@ -16,9 +16,9 @@ pub struct AndroidNotification {
     tag: Option<String>,
     click_action: Option<String>,
     body_loc_key: Option<String>,
-    body_loc_key_args: Option<Vec<String>>,
+    body_loc_args: Option<Vec<String>>,
     title_loc_key: Option<String>,
-    title_loc_key_args: Option<Vec<String>>,
+    title_loc_args: Option<Vec<String>>,
     channel_id: Option<String>,
     ticker: Option<String>,
     sticky: Option<bool>,
@@ -74,16 +74,16 @@ impl AndroidNotification {
         self.body_loc_key.as_ref()
     }
 
-    pub fn body_loc_key_args(&self) -> Option<&Vec<String>> {
-        self.body_loc_key_args.as_ref()
+    pub fn body_loc_args(&self) -> Option<&Vec<String>> {
+        self.body_loc_args.as_ref()
     }
 
     pub fn title_loc_key(&self) -> Option<&String> {
         self.title_loc_key.as_ref()
     }
 
-    pub fn title_loc_key_args(&self) -> Option<&Vec<String>> {
-        self.title_loc_key_args.as_ref()
+    pub fn title_loc_args(&self) -> Option<&Vec<String>> {
+        self.title_loc_args.as_ref()
     }
 
     pub fn channel_id(&self) -> Option<&String> {
@@ -182,16 +182,16 @@ impl AndroidNotification {
         self.body_loc_key = body_loc_key;
     }
 
-    pub fn set_body_loc_key_args(&mut self, body_loc_key_args: Option<Vec<String>>) {
-        self.body_loc_key_args = body_loc_key_args;
+    pub fn set_body_loc_args(&mut self, body_loc_args: Option<Vec<String>>) {
+        self.body_loc_args = body_loc_args;
     }
 
     pub fn set_title_loc_key(&mut self, title_loc_key: Option<String>) {
         self.title_loc_key = title_loc_key;
     }
 
-    pub fn set_title_loc_key_args(&mut self, title_loc_key_args: Option<Vec<String>>) {
-        self.title_loc_key_args = title_loc_key_args;
+    pub fn set_title_loc_args(&mut self, title_loc_args: Option<Vec<String>>) {
+        self.title_loc_args = title_loc_args;
     }
 
     pub fn set_channel_id(&mut self, channel_id: Option<String>) {
